@@ -1,0 +1,16 @@
+{
+    "contents" : "library(ggplot2)\ninPath  <- \"csv/\"\noutPath <- \"plots/\"\noutExtension <- \".png\"\n\n\n\nfiles <- list.files(pattern = \"\\\\.csv$\", path = inPath)\n\n\nfor (input in files){\n  output <- basename(file.path(input,fsep=\".csv\")) \n  graph  <- read.csv(paste0(\"csv/\", input), sep= \",\", header = T, fileEncoding=\"UTF-16LE\")\n  \n  q <- ggplot(graph, aes(learning.evaluation.instances, classifications.correct..percent.)) +\n        geom_point() +\n        scale_x_continuous(breaks = round(seq(min(graph$learning.evaluation.instances), \n                                              max(graph$learning.evaluation.instances), by = 3000),1)) +\n        scale_y_continuous(breaks = round(seq(min(graph$classifications.correct..percent.), \n                                              max(graph$classifications.correct..percent.), by = 10),1)) +\n        theme_bw() +\n        theme(axis.title=element_text(face=\"bold.italic\", size=\"12\", color=\"brown\"), legend.position=\"top\")\n  \n  ggsave(q, file=paste0(outPath, \"output for \", input, outExtension))\n} \n\n",
+    "created" : 1436513438355.000,
+    "dirty" : false,
+    "encoding" : "UTF-8",
+    "folds" : "",
+    "hash" : "1942941504",
+    "id" : "B501C209",
+    "lastKnownWriteTime" : 1436521956,
+    "path" : "F:/moa-prerelease-2015.05/output/rstudioPlotProject.R",
+    "project_path" : "rstudioPlotProject.R",
+    "properties" : {
+    },
+    "source_on_save" : false,
+    "type" : "r_source"
+}

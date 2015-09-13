@@ -1,0 +1,17 @@
+{
+    "contents" : "#classifiers \ndat = rbind(noChange, naiveBayes, levBag, htADWIN, hTeddm, awe, aue)\n\n#accuracy\nacc <- ggplot(aes(x = learning.evaluation.instances, y = classifications.correct..percent., color = classifier, linetype = classifier), data = dat) +\n  geom_line(lwd = 1) +\n  theme_gdocs()+\n  labs(y=\"Accuracy\",x=\"Instances\") +\n  scale_color_gdocs() +\n  scale_x_continuous(breaks = seq(0, 100000, 1500))+\n  ggtitle(\"Classification accuracy\")\n\n\n\n#kappa statistic\n\n\nk <- ggplot(aes(x = learning.evaluation.instances, y = Kappa.Statistic..percent., color = classifier, linetype = classifier), data = dat) +\n  geom_line(lwd = 1) +\n  theme_gdocs()+\n  labs(y=\"Kappa\",x=\"Instances\") +\n  scale_color_gdocs() +\n  scale_x_continuous(breaks = seq(0, 100000, 1500))+\n  ggtitle(\"Kappa statistic\")\n\n#kappa plus\n\nkp <- ggplot(aes(x = learning.evaluation.instances, y = Kappa.Temporal.Statistic..percent., color = classifier, linetype = classifier), data = dat) +\n  geom_line(lwd = 1) +\n  theme_gdocs()+\n  labs(y=\"Kappa plus\",x=\"Instances\") +\n  scale_color_gdocs() +\n  scale_x_continuous(breaks = seq(0, 100000, 1500))+\n  ggtitle(\"Kappa plus statistic\")\n\n#multiplot(k,kp, cols=2)\n\ngrid.newpage()\npushViewport(viewport(layout = grid.layout(2, 2)))\nvplayout <- function(x, y) viewport(layout.pos.row = x, layout.pos.col = y)\nprint(acc, vp = vplayout(1, 1:2))  # key is to define vplayout\nprint(k, vp = vplayout(2, 1))\nprint(kp, vp = vplayout(2, 2))",
+    "created" : 1442073202185.000,
+    "dirty" : false,
+    "encoding" : "UTF-8",
+    "folds" : "",
+    "hash" : "2655822510",
+    "id" : "D7B3EB95",
+    "lastKnownWriteTime" : 1441528652,
+    "path" : "C:/intellijProject/moa/rGraphs/plotEval.R",
+    "project_path" : "plotEval.R",
+    "properties" : {
+        "tempName" : "Untitled1"
+    },
+    "source_on_save" : false,
+    "type" : "r_source"
+}

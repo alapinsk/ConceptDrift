@@ -1,0 +1,17 @@
+{
+    "contents" : "#classifiers \ndat = rbind(noChange, naiveBayes, hT)\n\ndat = rbind(ensSAE, ensSAEmax, ensSAEmin)\nggplot(aes(x = learning.evaluation.instances, y = model.cost..RAM.Hours., col = classifier, linetype = classifier), data = dat) + \n  geom_line(lwd = 1) +\n  theme_gdocs()+\n  labs(y=\"Ram-Hours\",x=\"Instances\") +\n  scale_color_gdocs()\n\n\n####\n## Comparison of chunk sizes for awe and aue on elec2\n####\n#ram-hours \ndat = rbind(awe, aue, awe20, aue20)\n\n\nggplot(aes(x = learning.evaluation.instances, y = model.cost..RAM.Hours., col = classifier, linetype = classifier), data = dat) + \n  geom_line(lwd = 1) +\n  theme_gdocs()+\n  labs(y=\"Ram-Hours\",x=\"Instances\") +\n  scale_color_gdocs()\n",
+    "created" : 1442073204076.000,
+    "dirty" : false,
+    "encoding" : "UTF-8",
+    "folds" : "",
+    "hash" : "24745687",
+    "id" : "F1124ADC",
+    "lastKnownWriteTime" : 1442073163,
+    "path" : "C:/intellijProject/moa/rGraphs/plotRamHours.R",
+    "project_path" : "plotRamHours.R",
+    "properties" : {
+        "tempName" : "Untitled1"
+    },
+    "source_on_save" : false,
+    "type" : "r_source"
+}

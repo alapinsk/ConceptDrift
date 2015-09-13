@@ -1,0 +1,17 @@
+{
+    "contents" : "",
+    "created" : 1436514475155.000,
+    "dirty" : false,
+    "encoding" : "",
+    "folds" : "",
+    "hash" : "0",
+    "id" : "72FBF24D",
+    "lastKnownWriteTime" : 2323048667250716704,
+    "path" : null,
+    "project_path" : null,
+    "properties" : {
+        "context" : "package:ggplot2:::ggsave"
+    },
+    "source_on_save" : false,
+    "type" : "r_code_browser"
+}

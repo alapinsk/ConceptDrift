@@ -1,0 +1,16 @@
+{
+    "contents" : "library(ggplot2)\ninPath  <- \"csv/\"\noutPath <- \"plots/\"\noutExtension <- \".png\"\n\n\n\nfiles <- list.files(pattern = \"\\\\.csv$\", path = inPath)\n\n\nfor (input in files){\n  output <- basename(file.path(input,fsep=\".csv\")) \n  graph  <- read.csv(paste0(\"csv/\", input), sep= \",\", header = T, fileEncoding=\"UTF-16LE\")\n  \n  q <- ggplot(graph, aes(learning.evaluation.instances, classifications.correct..percent.)) +\n        geom_line(aes(colour = Kappa.Temporal.Statistic..percent.), size=0.5) + scale_colour_gradient(low=\"red\") +\n        scale_x_continuous(breaks = round(seq(min(graph$learning.evaluation.instances), \n                                              max(graph$learning.evaluation.instances), by = 5000),1)) +\n        scale_y_continuous(breaks = round(seq(min(graph$classifications.correct..percent.), \n                                              max(graph$classifications.correct..percent.), by = 10),1)) \n        #theme_bw() +\n        #theme(axis.title=element_text(face=\"bold.italic\", size=\"12\", color=\"brown\"), legend.position=\"top\")\n    \n    \n  \n  ggsave(q, file=paste0(outPath, \"output for \", input, outExtension),\n         width = 8, height = 6)\n} \n\n",
+    "created" : 1442073207453.000,
+    "dirty" : false,
+    "encoding" : "UTF-8",
+    "folds" : "",
+    "hash" : "2296870249",
+    "id" : "C9E5246A",
+    "lastKnownWriteTime" : 1436543954,
+    "path" : "C:/intellijProject/moa/rGraphs/rstudioPlotProject.R",
+    "project_path" : "rstudioPlotProject.R",
+    "properties" : {
+    },
+    "source_on_save" : false,
+    "type" : "r_source"
+}

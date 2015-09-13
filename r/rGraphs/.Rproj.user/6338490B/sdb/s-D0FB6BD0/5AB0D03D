@@ -1,0 +1,17 @@
+{
+    "contents" : "####\n## Comparison of chunk sizes for awe and aue on elec2\n####\n\n#classifiers  \n\nggplot(aes(x = learning.evaluation.instances, y = classifications.correct..percent., color = classifier, linetype = classifier), data = dat) +\n  geom_line(lwd = 1) +\n  theme_gdocs()+\n  labs(y=\"Accuracy\",x=\"Instances\") +\n  scale_color_gdocs() +\n  scale_x_continuous(breaks = seq(0, 100000, 1500))+\n  ggtitle(\"Classification accuracy\")\n",
+    "created" : 1442073197248.000,
+    "dirty" : false,
+    "encoding" : "UTF-8",
+    "folds" : "",
+    "hash" : "2926548989",
+    "id" : "5AB0D03D",
+    "lastKnownWriteTime" : 1441531886,
+    "path" : "C:/intellijProject/moa/rGraphs/plotChunkSizes.R",
+    "project_path" : "plotChunkSizes.R",
+    "properties" : {
+        "tempName" : "Untitled1"
+    },
+    "source_on_save" : false,
+    "type" : "r_source"
+}

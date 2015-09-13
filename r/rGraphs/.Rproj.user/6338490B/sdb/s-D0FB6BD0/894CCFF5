@@ -1,0 +1,17 @@
+{
+    "contents" : "#classifiers\n#dat = rbind(levBag, htADWIN, hTeddm, hT, awe, aue)\n\ndat = rbind(noChange, levBag, awe, aue, ensSAE, hT)\nggplot(aes(x = learning.evaluation.instances, y = classifications.correct..percent., color = classifier), data = dat) + geom_line()\n\n\n#THe best simple classifiers \ndat = rbind(ensSAEmax, ensSAEmin, ensSAE, hT, naiveBayes)\nggplot(aes(x = learning.evaluation.instances, y = classifications.correct..percent., color = classifier, linetype = classifier), data = dat) +\n  geom_line(lwd = 1) +\n  theme_gdocs()+\n  labs(y=\"Accuracy\",x=\"Instances\") +\n  scale_color_gdocs() +\n  scale_x_continuous(breaks = seq(0, 100000, 1500))\n\n",
+    "created" : 1442073205574.000,
+    "dirty" : false,
+    "encoding" : "UTF-8",
+    "folds" : "",
+    "hash" : "2071857652",
+    "id" : "894CCFF5",
+    "lastKnownWriteTime" : 1442073161,
+    "path" : "C:/intellijProject/moa/rGraphs/plotSimpleClassifiers.R",
+    "project_path" : "plotSimpleClassifiers.R",
+    "properties" : {
+        "tempName" : "Untitled1"
+    },
+    "source_on_save" : false,
+    "type" : "r_source"
+}

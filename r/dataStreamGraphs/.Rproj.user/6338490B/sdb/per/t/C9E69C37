@@ -1,0 +1,17 @@
+{
+    "contents" : "library(foreign)\nelecDS <- read.arff(\"../../moa/realDatasets/elecNormNew.arff\")\n\nlibrary(caret)\nlibrary(mlbench)\nregVar <- c(\"vicprice\")\n#get subset of set\n\nrandomSample <- elecDS[sample(1:nrow(elecDS), 10000,replace=FALSE), ]\n\nclassCount <- table(elecDS$class)\nbaselineAccuracy = classCount[\"DOWN\"]/(classCount[\"DOWN\"]+classCount[\"UP\"])\nelecDS$vicprice <- NULL\nelecDS$vicdemand <- NULL\nelecDS$transfer <- NULL\nelecDS$logNSWprice <- NULL\nelecDS$time <- NULL\n\nwrite.arff(elecDS, \"elecDSnswOnly.arff\")\n####\n#PLOTING\n####\n\n\n#nswprices\nelecDS$time <- as.numeric(rownames(elecDS))\n\nggplot(elecDS, aes(y = nswprice, x = time)) + \n  geom_point(aes(colour= class, shape= class), size = 3, alpha = .8) \n\n#nswprices - hist\nggplot(elecDS, aes(x = nswprice)) + \n  geom_histogram(binwidth = 0.01)\n\nelecDS$logNSWprice = log(elecDS$nswprice)\nelecDS$nswprice <- NULL\nelecDS <- elecDS[c(\"logNSWprice\",\"nswdemand\", \"class\")]\nwrite.arff(elecDS, \"elecDSnswOnlyLogPrice.arff\")\n\n#lognswprices - hist\nggplot(elecDS, aes(x = logNSWprice)) + \n   geom_histogram(binwidth = 0.01)\n\n\n#nswdemand\nggplot(elecDS, aes(y = nswdemand, x = time)) + \n  geom_point(aes(colour= class, shape= class), size = 3, alpha = .8) \n\n#nswdemand - boxplot\nggplot(elecDS, aes(y = nswdemand, x = class)) + \n  geom_boxplot(aes(fill = factor(class)))\n\n#nswdemand - hist\nggplot(elecDS, aes(x = nswdemand)) + \n  geom_histogram(binwidth = 0.01)\n\nelecDS$logNSWdemand <- NULL\n\n#lognswdemand - hist\nggplot(elecDS, aes(x = logNSWdemand)) + \n  geom_histogram(binwidth = 0.01)\n\n#vicprices\nggplot(elecDS, aes(y = transfer, x = time)) + \n  geom_point(aes(colour= class, shape= class), size = 3, alpha = .8) \n\n\nfeaturePlot(x=iris[, 1:3], y=iris[,5], plot=\"scatter\")\n\nlibrary(hexbin)\nggplot (randomSample, aes (x = Sepal.Length, y = Sepal.Width, fill = Species)) + \n  stat_binhex (bins=5, aes (alpha = ..count..)) + facet_grid (. ~ Species)\n\n\nfirst2500 <- elecDS[1:40000,]\nfirst2500$time <- as.numeric(rownames(first2500))\nfirst2500$nswprice <- first2500$nswprice*1000\nggplot(first2500, aes(y = nswprice, x = time)) + \n  geom_point(aes(colour= class, shape= class), size = 3, alpha = .8) \n\n\n\n###################################################\n# save to arff\n\n\n#write.\n  ",
+    "created" : 1436811637466.000,
+    "dirty" : false,
+    "encoding" : "UTF-8",
+    "folds" : "",
+    "hash" : "2315653148",
+    "id" : "C9E69C37",
+    "lastKnownWriteTime" : 1442136442,
+    "path" : "C:/intellijProject/ConceptDrift/r/dataStreamGraphs/plotDataSets.R",
+    "project_path" : "plotDataSets.R",
+    "properties" : {
+        "tempName" : "Untitled1"
+    },
+    "source_on_save" : false,
+    "type" : "r_source"
+}

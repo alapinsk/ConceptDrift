@@ -1,0 +1,17 @@
+{
+    "contents" : "#Plot airlines dataset\n\nlibrary(foreign)\nairlinesDS <- read.arff(\"../../moa/realDatasets/airlines.arff\")\nclassCount <- table(airlinesDS$Delay)\nbaselineAccuracy = classCount[1]/(classCount[2]+classCount[1])\nlibrary(caret)\nlibrary(mlbench)\nlibrary(rJava)\nlibrary(Deducer)\n\nrequire(lattice)\nrequire(ggplot2)\n\nfirst10000 <- airlinesDS[1:1000,]\n\n#nswprices\nfirst10000$ <- as.numeric(rownames(first10000))\n\nfirst10000$Airline <- as.numeric(first10000$Airline)\nfirst10000$AirportFrom <- as.numeric(first10000$AirportFrom)\nfirst10000$AirportTo <- as.numeric(first10000$AirportTo)\nfirst10000$DayOfWeek <- as.numeric(first10000$DayOfWeek)\n\n\nggplot(first10000, aes(y = Length, x = Time)) + \n  geom_point(aes(colour= Delay, shape= Delay), size = 3, alpha = .8) \n\n\ncorr.mat<-cor.matrix(variables=d(Airline, Flight, AirportFrom, AirportTo, DayOfWeek, Time, Length),,\n                     data=first10000,\n                     test=cor.test,\n                     method='kendall',\n                     alternative=\"two.sided\")\n\nggcorplot(cor.mat=corr.mat,data=first10000,type=\"bins\",\n           cor_text_limits=c(5,15),\n           lines=FALSE)\n\n\npairs(first10000[1:7], \n      main=\"Simple Scatterplot Matrix\")\n\n\n#p1 <- ggcorplot(cor.mat=corr.mat,data=diamonds,type=\"bins\",\n#                cor_text_limits=c(5,15),\n#                lines=FALSE)\n#print(p1)",
+    "created" : 1436811665615.000,
+    "dirty" : false,
+    "encoding" : "UTF-8",
+    "folds" : "",
+    "hash" : "3826428074",
+    "id" : "4E972FC4",
+    "lastKnownWriteTime" : 1442135896,
+    "path" : "C:/intellijProject/ConceptDrift/r/dataStreamGraphs/plotAirlinesDataSet.R",
+    "project_path" : "plotAirlinesDataSet.R",
+    "properties" : {
+        "tempName" : "Untitled1"
+    },
+    "source_on_save" : false,
+    "type" : "r_source"
+}
